@@ -54,3 +54,40 @@
 <img src="pictures/operations_get_pagination.jpg"/>
 
 
+<h2> Partie frontend </h2>
+
+<h2> Authentication</h2>
+<img src="pictures/Authentication.jpg"/>
+
+<h2> Customers list</h2>
+<img src="pictures/cust_list.jpg"/>
+
+<h2> Customer's  accounts</h2>
+<img src="pictures/cust_account.jpg"/>
+
+<h2> Customer search</h2>
+<img src="pictures/search_cu.jpg"/>
+
+<h2> Ajout de client</h2>
+<img src="pictures/aj1.jpg"/>
+<img src="pictures/aj2.jpg"/>
+
+<h2> Suppression de client</h2>
+<img src="pictures/sup.jpg"/>
+<img src="pictures/sup2.jpg"/>
+
+<h2> Gestion du compte</h2>
+<img src="pictures/gestc.jpg"/>
+
+<h2> Debit</h2>
+<img src="pictures/deb.jpg"/>
+<img src="pictures/deb2.jpg"/>
+
+<h2> Credit</h2>
+<img src="pictures/ced.jpg"/>
+<img src="pictures/ced2.jpg"/>
+
+<h2> Transfer</h2>
+<img src="pictures/tr.jpg"/>
+<img src="pictures/tr2.jpg"/>
+<img src="pictures/tr3.jpg"/>

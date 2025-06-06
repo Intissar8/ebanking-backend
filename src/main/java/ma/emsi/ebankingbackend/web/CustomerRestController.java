@@ -7,6 +7,7 @@ import ma.emsi.ebankingbackend.dtos.CustomerDTO;
 import ma.emsi.ebankingbackend.entities.Customer;
 import ma.emsi.ebankingbackend.exceptions.CustomerNotFoundException;
 import ma.emsi.ebankingbackend.services.BankAccountService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class CustomerRestController {
     private BankAccountService bankAccountService;//the controller communicate only with couche BankAccountService
 
     @GetMapping("/customers")
+    @PreAuthorize("hasAnyAuthority('SCOPE_USER')")
     public List<CustomerDTO> customers()
     {
         return bankAccountService.ListCustomers();
@@ -26,6 +28,7 @@ public class CustomerRestController {
     }
 
     @GetMapping("/customers/search")
+    @PreAuthorize("hasAnyAuthority('SCOPE_USER')")
     public List<CustomerDTO> searchCustomers(@RequestParam(name = "keyword",defaultValue = "") String keyword)
     {
         return bankAccountService.searchCutomers("%"+keyword+"%");
@@ -33,17 +36,20 @@ public class CustomerRestController {
     }
 
     @GetMapping("/customers/{id}")//we use get if we want to print data
+    @PreAuthorize("hasAnyAuthority('SCOPE_USER')")
     public CustomerDTO getCustomer(@PathVariable(name = "id") Long customerId) throws CustomerNotFoundException {
         return bankAccountService.getCustomer(customerId);
 
     }
 
     @PostMapping("/customers")//we use post if we want to save data // RequestBody is used pour que les donnees du Customer previent du cors de la requete
+    @PreAuthorize("hasAnyAuthority('SCOPE_ADMIN')")
     public CustomerDTO createCustomer(@RequestBody CustomerDTO customerDTO) {
        return bankAccountService.saveCustomer(customerDTO);
     }
 
     @PutMapping("/customers/{id}")//in Restfull we need to use Put for updates
+    @PreAuthorize("hasAnyAuthority('SCOPE_ADMIN')")
     public CustomerDTO updateCustomer(@RequestBody CustomerDTO customerDTO,@PathVariable(name = "id") Long customerId)//for PathVariable if the name in the url is the same as the attribute than there is no need to use (name = "id")
     {
         customerDTO.setId(customerId);
@@ -51,6 +57,7 @@ public class CustomerRestController {
     }
 
     @DeleteMapping("/customers/{customerId}")
+    @PreAuthorize("hasAnyAuthority('SCOPE_ADMIN')")
     public void deleteCustomer(@PathVariable Long customerId){
          bankAccountService.deleteCustomer(customerId);
 
